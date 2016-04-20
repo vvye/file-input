@@ -4,10 +4,10 @@ function fileInput(className, options) {
     var inputs = document.getElementsByClassName(className);
     for (var i = 0; i < inputs.length; i++) {
         var input = inputs[i];
-        if (input.tagName !== 'input' || input.type !== 'file') {
+        if (input.tagName.toLowerCase() !== 'input' || input.type.toLowerCase() !== 'file') {
             continue;
         }
-        
+
         input.id = input.id || input.name || 'input-' + i;
 
         var label = document.createElement('label');
