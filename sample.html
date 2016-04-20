@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>sample</title>
+		<script type="text/javascript" src="fileInput.js"></script>
+		<style type="text/css">
+			.my-input a {
+				display: inline-block;
+				margin-right: 8px;
+				background-color: #369;
+				padding: 8px 16px;
+				color: white;
+				cursor: pointer;
+			}
+
+			.my-input span {
+				font-style: italic;
+				color: #555;
+			}
+		</style>
+	</head>
+	<body>
+
+		<input type="file" class="my-input my-input-english" />
+
+		<input type="file" class="my-input my-input-german" />
+
+		<script type="text/javascript">
+			fileInput('my-input-english');
+
+			fileInput('my-input-german', {
+				buttonText: 'Durchsuchen&hellip;',
+				noFileText: 'Keine Datei ausgewählt.'
+			});
+		</script>
+
+	</body>
+</html>
