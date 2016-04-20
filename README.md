@@ -57,6 +57,6 @@ If you have JavaScript disabled, nothing will happen (but nothing will break eit
 		});
 	</script>
 	
-### Feedback?
+## Feedback?
 
-	Found a bug or got any feedback? Let me know! Open an issue or something. I'm still new to this.
+Found a bug or got any feedback? Let me know! Open an issue or something. I'm still new to this.
