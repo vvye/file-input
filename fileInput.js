@@ -18,16 +18,26 @@ function fileInput(className, options) {
         var browseButton = document.createElement('a');
         browseButton.innerHTML = options.buttonText || 'Browse&hellip;';
 
-        var filePathBox = document.createElement('span');
-        (function(filePathBox, input) {
+        var fileNameBox = document.createElement('span');
+        (function (fileNameBox, input) {
             (input.onchange = function () {
-                filePathBox.innerHTML = (input.value || '').split(/[\\/]/).pop() || options.noFileText || 'No file selected.';
+                var multiple = input.hasAttribute('multiple');
+                if ((multiple && input.files.length > 1)) {
+                    fileNameBox.innerHTML = input.files.length + ' ' + (options.multiFilesText || 'files selected.');
+                } else {
+                    var fileName = (input.value || '').split(/[\\/]/).pop();
+                    if (multiple) {
+                        fileNameBox.innerHTML = fileName || options.noFilesText || 'No files selected.';
+                    } else {
+                        fileNameBox.innerHTML = fileName || options.noFileText || 'No file selected.';
+                    }
+                }
             })();
-        })(filePathBox, input);
+        })(fileNameBox, input);
 
         input.parentNode.replaceChild(label, input);
         label.appendChild(input);
         label.appendChild(browseButton);
-        label.appendChild(filePathBox);
+        label.appendChild(fileNameBox);
     }
 }

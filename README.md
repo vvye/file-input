@@ -12,11 +12,13 @@ try something like [jQuery File Upload](https://github.com/blueimp/jQuery-File-U
 
 As simple as this:  
 
-    fileInput('foo')
+    fileInput('foo');
 will turn all `input` elements with a class of `foo` into their custom counterparts.  
 You can specify additional options by passing an object as the second parameter. The following keys will have an effect:
 * `buttonText`: what the "browse" button should say (default: "Browse&hellip;").
-* `noFileText`: what the file path text should say when no file is selected (default: "No file selected.").
+* `noFileText`: what the file name text should say when no file is selected (default: "No file selected.").
+* `multiFilesText`: what the file name text should say when multiple files are selected (default: "files selected"; the number of files is prepended).
+* `noFilesText`: what the file name text should say when no files are selected, but multiple could be (default: "No files selected").
 
 If you have JavaScript disabled, nothing will happen (but nothing will break either!).
 
@@ -38,7 +40,9 @@ If you have JavaScript disabled, nothing will happen (but nothing will break eit
 			color: #555;
 		}
 	</style>
+	
 	<input type="file" class="my-input" />
+	
 	<script type="text/javascript">
 		fileInput('my-input');
 	</script>
@@ -56,6 +60,17 @@ If you have JavaScript disabled, nothing will happen (but nothing will break eit
 			noFileText: 'Keine Datei ausgewählt.'
 		});
 	</script>
+	
+### Multiple
+	
+	<input type="file" class="my-input" multiple />
+	
+	<script type="text/javascript">
+		fileInput('my-input', {
+		    noFilesText: 'Not a single file selected.',
+		    multiFilesText: 'files have been selected.'
+		});
+	</script>	
 	
 ## Feedback?
 

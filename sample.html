@@ -23,14 +23,16 @@
 	<body>
 
 		<input type="file" class="my-input my-input-english" />
-		<input type="file" class="my-input my-input-german" />
+		<input type="file" class="my-input my-input-german" multiple />
 
 		<script type="text/javascript">
 			fileInput('my-input-english');
 
 			fileInput('my-input-german', {
 				buttonText: 'Durchsuchen&hellip;',
-				noFileText: 'Keine Datei ausgewählt.'
+				noFileText: 'Keine Datei ausgewählt.',
+				noFilesText: 'Keine Dateien ausgewählt.',
+				multiFilesText: 'Dateien ausgewählt.'
 			});
 		</script>
 
