@@ -8,31 +8,26 @@ function fileInput(className, options) {
             continue;
         }
 
-        input.id = input.id || input.name || 'input-' + i;
+        input.style.position = 'absolute';
+        input.style.visibility = 'hidden';
 
         var label = document.createElement('label');
         label.className = input.className;
-        input.className = '';
+        input.removeAttribute('class');
 
         var browseButton = document.createElement('a');
         browseButton.innerHTML = options.buttonText || 'Browse&hellip;';
 
         var filePathBox = document.createElement('span');
-        filePathBox.innerHTML = input.value || options.noFileText || 'No file selected.';
-
-        (function (target) {
-            input.onchange = function () {
-                target.innerHTML = this.value;
-            }
-        })(filePathBox);
-
-        label.appendChild(browseButton);
-        label.appendChild(filePathBox);
-
-        input.style.position = 'absolute';
-        input.style.visibility = 'hidden';
+        (function(filePathBox, input) {
+            (input.onchange = function () {
+                filePathBox.innerHTML = (input.value || '').split(/[\\/]/).pop() || options.noFileText || 'No file selected.';
+            })();
+        })(filePathBox, input);
 
         input.parentNode.replaceChild(label, input);
         label.appendChild(input);
+        label.appendChild(browseButton);
+        label.appendChild(filePathBox);
     }
 }
