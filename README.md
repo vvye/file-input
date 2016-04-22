@@ -14,10 +14,12 @@ As simple as this:
 
     fileInput('foo');
 will turn all `input` elements with a class of `foo` into their custom counterparts.  
+It generates an `a` element for the "browse" button and a `span` for the file name box, which in this case you can target with `.foo a` and `.foo span`.
+
 You can specify additional options by passing an object as the second parameter. The following keys will have an effect:
 * `buttonText`: what the "browse" button should say (default: "Browse&hellip;").
 * `noFileText`: what the file name text should say when no file is selected (default: "No file selected.").
-* `multiFilesText`: what the file name text should say when multiple files are selected (default: "files selected"; the number of files is prepended).
+* `multiFilesText`: what the file name text should say when multiple files are selected (default: "{num} files selected"). Use `{num}` as a placeholder for the number of files.
 * `noFilesText`: what the file name text should say when no files are selected, but multiple could be (default: "No files selected").
 
 If you have JavaScript disabled, nothing will happen (but nothing will break either!).
@@ -68,7 +70,7 @@ If you have JavaScript disabled, nothing will happen (but nothing will break eit
 	<script type="text/javascript">
 		fileInput('my-input', {
 		    noFilesText: 'Not a single file selected.',
-		    multiFilesText: 'files have been selected.'
+		    multiFilesText: 'You have selected {num} files.'
 		});
 	</script>	
 	
