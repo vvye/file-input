@@ -1,13 +1,14 @@
 function fileInput(className, options) {
-    options = options || {};
-    var buttonText = options.buttonText || 'Browse&hellip;';
-    var noFileText = options.noFileText || 'No file selected.';
-    var multiFilesText = options.multiFilesText || '{num} files selected.';
-    var noFilesText = options.noFilesText || 'No files selected.';
 
-    var inputs = document.getElementsByClassName(className);
-    for (var i = 0; i < inputs.length; i++) {
-        var input = inputs[i];
+    options = options || {};
+    const buttonText = options.buttonText || 'Browse&hellip;';
+    const noFileText = options.noFileText || 'No file selected.';
+    const multiFilesText = options.multiFilesText || '{num} files selected.';
+    const noFilesText = options.noFilesText || 'No files selected.';
+
+    const inputs = document.getElementsByClassName(className);
+    for (let i = 0; i < inputs.length; i++) {
+        const input = inputs[i];
 
         if (input.tagName.toLowerCase() !== 'input' || input.type.toLowerCase() !== 'file') {
             continue;
@@ -16,23 +17,23 @@ function fileInput(className, options) {
         input.style.position = 'absolute';
         input.style.visibility = 'hidden';
 
-        var label = document.createElement('label');
+        const label = document.createElement('label');
         label.className = input.className;
         input.removeAttribute('class');
 
-        var browseButton = document.createElement('a');
+        const browseButton = document.createElement('a');
         browseButton.innerHTML = buttonText;
 
-        var fileNameBox = document.createElement('span');
-        
+        const fileNameBox = document.createElement('span');
+
         (function updateFileName(fileNameBox, input) {
             (input.onchange = function () {
-                var multiple = input.hasAttribute('multiple');
-                var numFiles = input.files.length;
+                const multiple = input.hasAttribute('multiple');
+                const numFiles = input.files.length;
                 if ((multiple && numFiles > 1)) {
                     fileNameBox.innerHTML = multiFilesText.replace('{num}', '' + numFiles);
                 } else {
-                    var fileName = (input.value || '').split(/[\\/]/).pop();
+                    const fileName = (input.value || '').split(/[\\/]/).pop();
                     if (multiple) {
                         fileNameBox.innerHTML = fileName || noFilesText;
                     } else {
@@ -47,4 +48,5 @@ function fileInput(className, options) {
         label.appendChild(browseButton);
         label.appendChild(fileNameBox);
     }
+
 }
