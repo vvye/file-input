@@ -1,4 +1,4 @@
-function fileInput(className, options) {
+function fileInput(selector, options) {
 
     options = options || {};
     const buttonText = options.buttonText || 'Browse&hellip;';
@@ -8,7 +8,7 @@ function fileInput(className, options) {
     const multiFilesText = options.multiFilesText || '{num} files selected.';
     const noFilesText = options.noFilesText || 'No files selected.';
 
-    const inputs = document.getElementsByClassName(className);
+    const inputs = document.querySelectorAll(selector);
     for (let i = 0; i < inputs.length; i++) {
         const input = inputs[i];
 
