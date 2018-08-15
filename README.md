@@ -24,7 +24,7 @@ will turn all `input` elements into their custom counterparts. The new element k
 To affect only specific `input` elements, you can pass a CSS selector or an `HTMLElement` object:
 
     fileInput('.foo > .bar');
-    fileInput(document.getElementById('baz');
+    fileInput(document.getElementById('baz'));
    
 ## Styling
 
