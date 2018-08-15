@@ -2,6 +2,8 @@ function fileInput(className, options) {
 
     options = options || {};
     const buttonText = options.buttonText || 'Browse&hellip;';
+    const buttonClasses = options.buttonClasses || [];
+    const fileNameClasses = options.fileNameClasses || [];
     const noFileText = options.noFileText || 'No file selected.';
     const multiFilesText = options.multiFilesText || '{num} files selected.';
     const noFilesText = options.noFilesText || 'No files selected.';
@@ -22,9 +24,11 @@ function fileInput(className, options) {
         input.removeAttribute('class');
 
         const browseButton = document.createElement('a');
+        browseButton.classList.add(...buttonClasses);
         browseButton.innerHTML = buttonText;
 
         const fileNameBox = document.createElement('span');
+        fileNameBox.classList.add(...fileNameClasses);
 
         (function updateFileName(fileNameBox, input) {
             (input.onchange = function () {

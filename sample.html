@@ -24,6 +24,12 @@
 				cursor: pointer;
 			}
 
+			.button.primary {
+				border: none;
+				background-color: #369;
+				color: white;
+			}
+
 			.some-class {
 				font-style: italic;
 				color: #666;
@@ -36,13 +42,17 @@
 		<input type="file" class="my-input my-input-german" multiple />
 
 		<script type="text/javascript">
-            fileInput('my-input-english');
+            fileInput('my-input-english', {
+                buttonClasses: ['button'],
+            });
 
             fileInput('my-input-german', {
                 buttonText: 'Durchsuchen&hellip;',
+	            buttonClasses: ['button', 'primary'],
                 noFileText: 'Keine Datei ausgewählt.',
                 noFilesText: 'Keine Dateien ausgewählt.',
-                multiFilesText: '{num} Dateien ausgewählt.'
+                multiFilesText: '{num} Dateien ausgewählt.',
+	            fileNameClasses: ['some-class']
             });
 		</script>
 
