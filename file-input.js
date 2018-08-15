@@ -3,10 +3,10 @@ function fileInput(selector, options) {
     options = options || {};
     const buttonText = options.buttonText || 'Browse&hellip;';
     const buttonClasses = options.buttonClasses || [];
-    const fileNameClasses = options.fileNameClasses || [];
     const noFileText = options.noFileText || 'No file selected.';
     const multiFilesText = options.multiFilesText || '{num} files selected.';
     const noFilesText = options.noFilesText || 'No files selected.';
+    const fileNameClasses = options.fileNameClasses || [];
 
     const inputs = document.querySelectorAll(selector);
     for (let i = 0; i < inputs.length; i++) {
@@ -38,11 +38,7 @@ function fileInput(selector, options) {
                     fileNameBox.innerHTML = multiFilesText.replace('{num}', '' + numFiles);
                 } else {
                     const fileName = (input.value || '').split(/[\\/]/).pop();
-                    if (multiple) {
-                        fileNameBox.innerHTML = fileName || noFilesText;
-                    } else {
-                        fileNameBox.innerHTML = fileName || noFileText;
-                    }
+                    fileNameBox.innerHTML = fileName || (multiple ? noFilesText : noFileText);
                 }
             })();
         })(fileNameBox, input);
