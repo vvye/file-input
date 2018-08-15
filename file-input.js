@@ -1,5 +1,13 @@
 function fileInput(selector, options) {
 
+    if (arguments.length === 0) {
+        options = {};
+        selector = 'input[type="file"]';
+    } else if (arguments.length === 1 && !(selector instanceof HTMLElement) && typeof selector !== 'string' && selector !== null) {
+        options = selector;
+        selector = 'input[type="file"]';
+    }
+
     options = options || {};
     const buttonText = options.buttonText || 'Browse&hellip;';
     const buttonClasses = options.buttonClasses || [];
@@ -8,11 +16,11 @@ function fileInput(selector, options) {
     const noFilesText = options.noFilesText || 'No files selected.';
     const fileNameClasses = options.fileNameClasses || [];
 
-    const inputs = document.querySelectorAll(selector);
+    const inputs = selector instanceof HTMLElement ? [selector] : document.querySelectorAll(selector);
     for (let i = 0; i < inputs.length; i++) {
         const input = inputs[i];
 
-        if (input.tagName.toLowerCase() !== 'input' || input.type.toLowerCase() !== 'file') {
+        if (input.tagName.toLowerCase() !== 'input' || input.type.toLowerCase() !== 'file' || input.style.visibility === 'hidden') {
             continue;
         }
 

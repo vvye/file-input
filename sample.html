@@ -14,14 +14,17 @@
 				margin: 1rem;
 			}
 
-			.button {
+			a {
 				display: inline-block;
-				margin-right: 0.5rem;
 				border: 1px solid #aaa;
 				border-radius: 1.5px;
-				background-color: #ddd;
-				padding: 0.5rem 1rem;
+				margin-right: 0.5rem;
 				cursor: pointer;
+			}
+
+			.button {
+				padding: 0.5rem 1rem;
+				background-color: #ddd;
 			}
 
 			.button.primary {
@@ -38,22 +41,41 @@
 	</head>
 	<body>
 
-		<input type="file" class="my-input my-input-english" />
-		<input type="file" class="my-input my-input-german" multiple />
+		<input type="file" class="my-input my-input-1" />
 
 		<script type="text/javascript">
-            fileInput('.my-input-english', {
-                buttonClasses: ['button'],
+
+            // omitting the selector affects all file input elements (that aren't already affected)
+            fileInput();
+
+            document.write('<input type="file" class="my-input my-input-2" />');
+            document.write('<input type="file" class="my-input my-input-3" />');
+
+            // passing a custom selector
+            fileInput('.my-input:last-child');
+
+            document.write('<input type="file" class="my-input my-input-4" id="foo" />');
+
+            // passing an HTMLElement object
+            fileInput(document.getElementById('foo'));
+
+            // passing options only
+            fileInput({
+               buttonText: 'Select a file...',
+               buttonClasses: ['button']
             });
 
-            fileInput('.my-input-german', {
-                buttonText: 'Durchsuchen&hellip;',
-	            buttonClasses: ['button', 'primary'],
-                noFileText: 'Keine Datei ausgewählt.',
-                noFilesText: 'Keine Dateien ausgewählt.',
-                multiFilesText: '{num} Dateien ausgewählt.',
-	            fileNameClasses: ['some-class']
-            });
+            document.write('<input type="file" class="my-input my-input-5" multiple />');
+
+            // passing a selector and options
+            fileInput('.my-input-5', {
+                buttonText: 'Select another file...',
+                buttonClasses: ['button', 'primary'],
+                noFilesText: 'Nothing selected.',
+                multiFilesText: 'There are {num} files.',
+                fileNameClasses: ['some-class']
+            })
+
 		</script>
 
 	</body>
