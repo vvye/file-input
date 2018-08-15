@@ -5,18 +5,28 @@
 		<title>sample</title>
 		<script type="text/javascript" src="fileInput.js"></script>
 		<style type="text/css">
-			.my-input a {
+			body {
+				font-family: sans-serif;
+			}
+
+			.my-input {
+				display: block;
+				margin: 1rem;
+			}
+
+			.button {
 				display: inline-block;
-				margin-right: 8px;
-				background-color: #369;
-				padding: 8px 16px;
-				color: white;
+				margin-right: 0.5rem;
+				border: 1px solid #aaa;
+				border-radius: 1.5px;
+				background-color: #ddd;
+				padding: 0.5rem 1rem;
 				cursor: pointer;
 			}
 
-			.my-input span {
+			.some-class {
 				font-style: italic;
-				color: #555;
+				color: #666;
 			}
 		</style>
 	</head>
@@ -26,14 +36,14 @@
 		<input type="file" class="my-input my-input-german" multiple />
 
 		<script type="text/javascript">
-			fileInput('my-input-english');
+            fileInput('my-input-english');
 
-			fileInput('my-input-german', {
-				buttonText: 'Durchsuchen&hellip;',
-				noFileText: 'Keine Datei ausgewählt.',
-				noFilesText: 'Keine Dateien ausgewählt.',
-				multiFilesText: '{num} Dateien ausgewählt.'
-			});
+            fileInput('my-input-german', {
+                buttonText: 'Durchsuchen&hellip;',
+                noFileText: 'Keine Datei ausgewählt.',
+                noFilesText: 'Keine Dateien ausgewählt.',
+                multiFilesText: '{num} Dateien ausgewählt.'
+            });
 		</script>
 
 	</body>
